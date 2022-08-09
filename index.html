@@ -1,1 +1,1142 @@
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>小宏XeLa</title>
+    <link rel="shortcut icon" href="https://static.codemao.cn/nemo/avatar/avator_8.png">
+    <style>
+
+/*网页*/
+body{
+  text-align: center;
+  margin: 0;
+  overflow:hidden;
+  font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif
+}
+br{
+  user-select: none
+}
+.nose{
+  user-select: none
+}
+
+/*网站头顶部分*/
+.bodyHead{
+  background: #66ccff; 
+  padding: 12px;
+  color:#ffffff;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.headString{
+  font-size:25px;
+  color:#ffffff;
+  text-decoration: none
+}
+.headButton{
+  color:#ffffff;
+  font-size:20px;
+  background:#ffffff00;
+  padding: 17px 16px 14px 16px;
+  text-decoration: none;
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+  transition-delay: 0s
+}
+.headButton:hover {
+  background: #00bfff
+}
+
+/*网页内容*/
+.bodyContent{
+  margin: 8px;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.bodyContent::-webkit-scrollbar {
+  height:5px;
+  width:5px
+}
+.bodyContent::-webkit-scrollbar-track {
+  background: #66ccff22;
+  border-radius: 5px
+}
+.bodyContent::-webkit-scrollbar-thumb {
+  background: #66ccff;
+  border-radius: 5px
+}
+.bodyContent::-webkit-scrollbar-thumb:hover {
+  background: #00bbee
+}
+
+/*按钮*/
+.bodyButton{
+  color:#000;
+  background-color:#fff0;
+  padding: 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition-property: all;
+  transition-duration: 0.4s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  user-select: none
+}
+.bodyButton:hover{
+  background-color:#eee
+}
+.botbtn:hover{
+  background-color:#bbb3
+}
+.bodyButton:active{
+  background-color:#aaa9
+}
+
+/*开头文字*/
+.startText{
+  font-size:28px;
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+  user-select: none
+}
+.startText:hover {
+  font-size:38px
+}
+.start{
+  cursor: default
+}
+h1,h2,h3,h4,h5,h6{
+  cursor: default;
+  user-select: none
+}
+
+/*代码框*/
+.codeWork{
+  border-radius: 5px;
+  text-align: left; 
+  background: #151515; 
+  padding: 9px 12px;
+  margin: 4px 2px;
+  color:#ffffff;
+  overflow: auto;
+  white-space: pre;
+  user-select: text;
+  font-family: source-code-pro,Menlo,Monaco,Consolas,Courier New,monospace
+}
+.codeWork::-webkit-scrollbar {
+  height:5px
+}
+.codeWork::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 5px
+}
+.codeWork::-webkit-scrollbar-thumb:hover {
+  background: #888
+}
+a::selection,.codeWork::selection,c::selection{
+  background-color:#ddd4
+}
+  
+/*代码文字颜色*/
+.codeStri{/*字串符*/
+  color:#ce9178
+}
+.codeChar{/*默认*/
+  color:#ffffff
+}
+.codeCaps{/*大写*/
+  color:#3dc9b0
+}
+.codeChin{/*文字*/
+  color:#f44747
+}
+.codeAnot{/*注释*/
+  color:#608b4e
+}
+.codeImpo{/*蓝色*/
+  color:#569cd6
+}
+.codeNumb{/*数字*/
+  color:#b5cea8
+}
+
+/*弹窗设置*/
+.dialogBackground{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0000;
+  backdrop-filter: blur(0px);
+  transition-duration: 0.2s;
+}
+.dialog{
+  transform: scale(0.5);
+  align-items: center;
+  justify-content: center;
+  margin: 5% auto;
+  background-color: #fefefe;
+  border-radius: 10px;
+  box-shadow: 0 0 130px 20px #333;
+  transition-duration: 0.2s;
+  display:none;
+  opacity:0.1;
+  width: 80%;
+  height: 80%;
+}
+.dialogHead{
+  border-radius: 10px 10px 0px 0px;
+  background-color:#6cf;
+  text-align: left;
+  cursor: default;
+  user-select: none
+}
+.dialogHeadText{
+  line-height: 60px;
+  font-size: 30px;
+  padding: 0px 25px;
+  color: #fff
+}
+.dialogBody{
+  font-size: 20px;
+  padding: 10px 40px;
+  overflow: auto
+}
+.dialogCloseBtn{
+  color: #fff;
+  float: right;
+  font-size: 40px;
+  padding: 0px 16px 7px 16px;
+  border-radius: 0px 10px 0px 0px;
+  font-weight: bold;
+  text-decoration: none;
+  transition-property: all;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+  transition-delay: 0s
+}
+.dialogCloseBtn:hover {
+  background-color: #00bfff
+}
+.dialogCloseBtn:active{
+  background-color: #00a5dd
+}
+.diaP{
+  margin: 0.25em 0px 0px 0px;
+  user-select: none
+}
+
+/*输入框*/
+.input{
+  border:1px solid #aaa;
+  border-radius: 2px;
+  width: 25%
+}
+
+/*作者信息框*/
+.authorWork{
+  background-color:#f9f9f9;
+  padding: 7.5px;
+  font-size:16px;
+  width: 600px;/*500*/
+  height: 90px;
+  border-radius: 5px;
+  border:1px solid #aaa;
+  cursor: default;
+  user-select: none
+}
+
+/*首页公告栏*/
+.home .gg{
+  margin: 10px 0px;
+  background-color:#6cf;
+  padding: 60px 10px;
+  width: 900px;
+  border-radius: 10px;
+  color:#fff;
+  font-size:23px;
+}
+
+/*首页的工具选项按钮*/
+.gjlb a{
+  margin: 10px;
+  display: flex;
+  background-color:#fff;
+  padding: 40px 50px;
+  border-radius: 10px;
+  color:#000;
+  border:2.5px solid #aaa;
+  transition-duration: 0.25s;
+  text-decoration: none
+}
+.gjlb a:hover{
+  color:#6cf;
+  border-color:#6cf;
+  box-shadow: 0px 7.5px 13px -3px #aaa
+}
+.gjlb{
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+    </style>
+    <style name='codecss'>.codeWork,.home .gg,.gjlb{width: 900px;}</style>
+    <style>
+
+.cdbcn{
+  transition-duration: 0.3s;
+  color: #6cf;
+  text-decoration: none;
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
+  border-radius: 100px;
+}
+.back-to-top {
+  transform: rotate(270deg);
+}
+.back-to-top a {
+  margin: 0;
+  position: relative;
+  right: 0px;
+  top: 3.5px;
+  font-size: 25px;
+}
+.cdbcn:hover {
+  background:#66ccff;
+  cursor: pointer;
+  color: #fff;	
+}
+.fa-arrow-up:before {
+  content: "\27A4";
+}
+.newsDialog{
+  position: fixed;
+  top: 50px;
+  right: -400px;
+  background: #fff;
+  width: 350px;
+  text-align: left; 
+  border-radius: 10px;
+  padding: 17.5px 21px 17.5px 15px;
+  box-shadow: 0px 0px 20px 1px #666;
+  color:#0000;
+  transition: box-shadow 0.35s,color 0.2s,right 0.5s;
+}
+.newsDialog a{
+  float: right;
+  font-size: 25px;
+  border-radius: 0px 10px 0px 0px;
+  text-decoration: none;
+  font-weight: 900;
+  line-height: 20px;
+  cursor: pointer;
+}
+.newsDialog a:hover{
+  color: #000;
+}
+.newsDialog:hover{
+  box-shadow: 0px 0px 40px 1px #666;
+  color: #aaa;
+}
+.yxjcd{
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  background-color: #6cf;
+  border:1px solid #6cf;
+  border-radius: 100px;
+}
+
+    </style>
+  </head>
+  <body>
+    <div name='body' style='display:none'  align="center">
+      <div class='back-to-top yxjcd'>
+        <div class="cdbcn" style="display: block;" onclick='backTop()'><a class='fa-arrow-up'></a></div>
+      </div>
+      <div class="newsDialog" name='news'>
+        <a class='nose' onclick='newsDiaClose()'>×</a>
+        <div style='color:#000'>
+          <span>你好呀，欢迎使用小宏XeLa共享网站~</span><br><br>
+          <div>近日更新：<br>1.窗口适应<br>2.数学做好了一点（先给你们看看）<br>3.消息框窗口改了一下<br>4.其他</div>
+        </div>
+      </div>
+      <div class='bodyHead'>
+        <a class='headString' href=''>小宏XeLa共享网站</a>
+        <span class='space' name='hsp'></span>
+        <span><a class='headButton' name='hb' href='?nonews=false'>首页</a><a class='headButton' name='hb' href='?cd=dm&nonews=false'>代码区</a><a class='headButton' href='javascript:dialogOpen();'>关于</a></span>
+      </div>
+      <div class='bodyContent' name='bco'>
+        <div class='start' name='start'>
+          <h2 style='margin: 0.75em 0px 0px 0px;'>
+            <a class='startText'>Welcome</a>
+            <a class='startText'>to</a>
+            <a class='startText'>use</a>
+            <a class='startText'>the</a>
+            <a class='startText'>XiaoHong</a>
+            <a class='startText'>XeLa</a>
+            <a class='startText'>to</a>
+            <a class='startText'>share</a>
+            <a class='startText'>the</a>
+            <a class='startText'>website</a>
+          </h2>
+          <h3 style='margin: 5px 0px 0px 0.83em;'>欢迎使用小宏XeLa共享网站</h3>
+          <br>
+        </div>
+        <div class='home' name='sydnr' align="center">
+          <div class='gg nose'>
+            <a>欢迎来到小宏XeLa共享网站</a><br><a>Welcome to XiaoHong XeLa to share the website</a>
+          </div>
+          <div>
+            <h3>· 在线小工具 ·</h3>
+            <div class='gjlb nose'>
+              <a href='javascript:dialog2Open()'>随机数</a>
+              <a href='javascript:dialog3Open()'>数学</a>
+              <a href=''>空</a>
+              <a href=''>空</a><br>
+            </div><h4>更多小工具开发中，敬请期待</h3>
+          </div>
+        </div>
+        <div class='content' align="center" name='dmcon'>
+          <h1 style='font-size:35px'>
+            <span>欢迎来到 代码区<span>
+          </h1>
+          <h1>
+            <a href='https://box3.fun' class='bodyButton' target="_blank">
+              <img src="https://box3.fun/favicon.ico" style='height:25px;'> 神奇代码岛
+            </a>
+          </h1>
+          <h2>
+            <a href='https://docs.box3.codemao.cn' class='bodyButton' target="_blank">
+              <span class='codeChin'>♥</span> 代码分享 <span class='codeChin'>♥</span>
+            </a>
+          </h2>
+          <h3><a>·</a> help样式 <a>·</a></h3>
+
+<div class='codeWork'><a class='codeAnot'>//help代码样式1</a>
+world.onChat(<a class='codeImpo'>async</a> ({ entity, message }) => {<a class='codeAnot'> //当有玩家发言</a>
+    <a class='codeImpo'>if</a> (message == <a class='codeStri'>'help'</a>) {<a class='codeAnot'> //判断玩家是否输入的是“help”，可自行修改</a>
+        entity.player.directMessage(<a class='codeStri'>"帮助内容"</a>)<a class='codeAnot'> //帮助内容为“帮助内容”，可自行修改，输入\n可以实现换行</a>
+    }
+})</div>
+
+<div class='codeWork'><a class='codeAnot'>//help代码样式2</a>
+world.onChat(<a class='codeImpo'>async</a> ({ entity, message }) => {<a class='codeAnot'> //当有玩家发言</a>
+    <a class='codeImpo'>if</a> (message == <a class='codeStri'>'help'</a>) {<a class='codeAnot'> //判断玩家是否输入的是“help”，可自行修改</a>
+        <a class='codeImpo'>var</a> helpContentData = [<a class='codeAnot'> //help列表，可自行修改，输入\n可以实现换行</a>
+            <a class='codeStri'>'第1条'</a>,
+            <a class='codeStri'>'第2条'</a>,
+            <a class='codeStri'>'第3条'</a>
+        ]
+
+        <a class='codeImpo'>for</a> (<a class='codeImpo'>let</a> i = <a class='codeNumb'>0</a>; i < helpContentData.length; i++) {<a class='codeAnot'> //遍历全部help列表</a>
+            <a class='codeImpo'>await <a class='codeAnot'> /* 等待玩家关闭对话框后才执行下面的代码 */</a>
+                entity.player.dialog({<a class='codeAnot'> //玩家弹出对话框</a>
+                    type: <a class='codeStri'>"select"</a>,<a class='codeAnot'> //对话框类型为选项框</a>
+                    title: <a class='codeStri'>'帮助'</a>,<a class='codeAnot'> //对话框标题为'帮助'，可自行修改</a>
+                    content: helpContentData[i],<a class='codeAnot'> //对话框内容为help列表的第i项</a>
+                    options: [i != helpContentData.length - <a class='codeNumb'>1</a> ? <a class='codeStri'>'下一条'</a> : <a class='codeStri'>"确认"</a>]<a class='codeAnot'> //对话框按钮（如果是最后一条，则为确认按钮，否则是下一条按钮）</a>
+                })
+        }
+    }
+})</div>
+      
+          <h3><a>·</a> 模仿 KITTEN 对话框特效 <a>·</a></h3>
+
+<div class='codeWork'><a class='codeImpo'>async function</a> entityDialog(entity, title = <a class='codeStri'>""</a>, text = <a class='codeStri'>""</a>, switchingSpeed = <a class='codeNumb'>100</a>) {
+    <a class='codeImpo'>try</a> { <a class='codeAnot'>//先尝试运行代码</a>
+        <a class='codeImpo'>var</a> content = <a class='codeStri'>''</a> <a class='codeAnot'>//对话框显示内容</a>
+        <a class='codeImpo'>for</a> (<a class='codeImpo'>let</a> i = <a class='codeNumb'>0</a>; i < text.length; i++) { <a class='codeAnot'>//遍历对话框文本内容的全部字符</a>
+            entity.player.cancelDialogs(); <a class='codeAnot'>//关闭玩家刚才打开的对话框</a>
+            content += text[i]; <a class='codeAnot'>//将对话框文本内容的第i个字符加进对话框显示内容</a>
+            entity.player.dialog({ <a class='codeAnot'>//玩家显示对话框</a>
+                type: <a class='codeStri'>"text"</a>,  <a class='codeAnot'>//对话框类型为文本框</a>
+                title, <a class='codeAnot'>//对话框标题为自定义</a>
+                content, <a class='codeAnot'>//对话框内容为 对话框显示内容</a>
+            })
+            <a class='codeImpo'>await</a> sleep(switchingSpeed); <a class='codeAnot'>//等待播放速度毫秒</a>
+        }
+    }<a class='codeImpo'>catch</a>(e){ <a class='codeAnot'>//如果报错了，证明entity不是玩家类型实体参数</a>
+        <a class='codeImpo'>throw</a> <a class='codeCaps'>TypeError</a>(<a class='codeStri'>"Invalid entity parameter"</a>); <a class='codeAnot'>//在控制台报错</a>
+    }
+}
+
+world.onPlayerJoin(({ entity }) => { <a class='codeAnot'>//当玩家进入地图时</a>
+    <a class='codeAnot'>//调试函数</a>
+    entityDialog(entity <a class='codeAnot'>/*玩家*/</a>, <a class='codeStri'>"hi"</a> <a class='codeAnot'>/*对话框标题内容*/</a>, <a class='codeStri'>"你好呀，欢迎来到Box3星球"</a> <a class='codeAnot'>/*对话框文本内容*/</a>, <a class='codeNumb'>100</a> <a class='codeAnot'>/*对话框文本播放速度（单位：ms/字）*/</a> );
+})</div>
+      
+          <h3>
+            <a href='javascript:dialog2Open()' class='bodyButton'>
+              <span>· 随机数 ·</span>
+            </a>
+          </h3>
+
+<div class='codeWork'><a class='codeImpo'>function</a> getRandom(min = <a class='codeNumb'>0</a><a class='codeAnot'>/*最小值*/</a>, max = <a class='codeNumb'>1</a><a class='codeAnot'>/*最大值*/</a>, fixed = <a class='codeNumb'>0</a><a class='codeAnot'>/*保留小数位数*/</a>) { 
+    <a class='codeImpo'>let</a> differ = max - min
+    <a class='codeImpo'>let</a> randoms = <a class='codeCaps'>Math</a>.random()
+    <a class='codeImpo'>return</a> (min + differ * randoms).toFixed(fixed)
+}</div>
+
+          <h3>· 清空聊天区代码 ·</h3>
+
+<div class='codeWork'><a class='codeImpo'>var</a> content = <a class='codeStri'>""</a>;
+<a class='codeImpo'>for </a>(i = <a class='codeNumb'>0</a>; i <= <a class='codeNumb'>300</a>; i++){
+    content = content + <a class='codeStri'>'\n'</a>;
+}
+world.say(content);</div>
+
+          <h3>· 查找地形方块代码 ·</h3>
+
+<div class='codeWork'>(<a class='codeImpo'>async function</a> () {
+    world.say(<a class='codeStri'>"提示：正在查找地形方块，这时候可能会卡一阵子，属于正常现象"</a>);
+    <a class='codeImpo'>var</a> voxelsData = <a class='codeStri'>'地图里有：\n'</a>;
+    <a class='codeImpo'>for await </a>(<a class='codeImpo'>var </a>voxName <a class='codeImpo'>of</a> voxels.VoxelTypes) {
+        <a class='codeImpo'>if </a>(voxName != <a class='codeStri'>'air'</a>) {
+            <a class='codeImpo'>var </a>voxNum = <a class='codeNumb'>0</a>;
+            <a class='codeImpo'>for </a>(x = <a class='codeNumb'>0</a>; x < <a class='codeNumb'>128</a>; x++) {
+                <a class='codeImpo'>for </a>(y = <a class='codeNumb'>0</a>; y < <a class='codeNumb'>128</a>; y++) {
+                    <a class='codeImpo'>for </a>(z = <a class='codeNumb'>0</a>; z < <a class='codeNumb'>128</a>; z++) {
+                        <a class='codeImpo'>if </a>(voxels.name(voxels.getVoxelId(x, y, z)) == voxName) {
+                            voxNum++;
+                        }
+                    }
+                }
+                <a class='codeImpo'>await </a>sleep(<a class='codeNumb'>0.01</a>);<a class='codeAnot'> //防止代码执行超时</a>
+            }
+            <a class='codeImpo'>if </a>(voxNum != <a class='codeNumb'>0</a>) {
+                voxelsData = voxelsData + <a class='codeStri'>`<c class='codeChar'>${voxNum}</c>个 <c class='codeChar'>${voxName}</c> 方块；\n`</a>;
+            }
+        }
+    }
+    world.say(voxelsData);
+}())</div>
+
+          </div>
+          <div align="center">
+            <div class='bottomDiv nose' align="center">
+              <bottom>你已经到了世界的尽头~</bottom>
+              <div align="center" class='bottom2'>
+                <div class='bottom3'><strong>·</strong><a class='bodyButton botbtn' href='javascript:backTop();'>回到顶部</a></div>
+                <div class='bottom3'><strong>·</strong><a class='bodyButton botbtn' href="javascript:dialogOpen();">关于作者</a></div>
+              </div>
+          </div>
+          <!--css代码写在这是为了方便查看-->
+          <style>
+           .bottomDiv{
+              background-color:#f9f9f9;
+              border: 1px solid #aaa;
+              margin: 30px 5px 5px 0px;
+              padding: 12px 24px;
+              width: 865px;
+              border-radius: 10px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              flex-wrap: nowrap;
+              flex-direction: column;
+           }
+           .bottom2 strong{
+             margin: 0px 2px 0px 0px
+           }
+           .bottom2{
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             flex-wrap: nowrap;
+             flex-direction: column;
+           }
+           bottom{
+             margin: 5px 5px;
+             padding: 5px 10px;
+             font-size:25px;
+           }
+           .bottom3{
+             display: flex;
+             justify-content: center;
+             align-items: center;
+             flex-wrap: nowrap;
+             flex-direction: row;
+           }
+          </style>
+          <script>
+            function backTop(sd = 15){
+              var beijin = document.getElementsByName("bco")[0]
+              var times = setInterval(()=>{
+                let wTop = beijin.scrollTop
+                let speed = Math.floor(-wTop/sd)
+                beijin.scrollTop = wTop + speed
+                if(wTop == 0){clearInterval(times)}
+              },10)
+            }
+          </script>
+         </div>
+      </div>
+      <div style='z-index:9999999999999999'>
+        <!-- 弹窗开始 -->
+        <div class='dialogBackground' style="display: none;" name='dialog'>
+          <!-- 关于弹窗开始 -->
+          <div class="dialog" name='dialog1'>
+
+            <div class="dialogHead">
+              <span class='dialogHeadText'>关于</span>
+              <a class="dialogCloseBtn" href="javascript:dialogClose();">×</a>
+            </div>
+
+            <div class="dialogBody">
+              <div>
+                <h2 style='margin: 0px; cursor: default;'>
+                  <a class='startText'>This</a>
+                  <a class='startText'>website</a>
+                  <a class='startText'>is</a>
+                  <a class='startText'>made</a>
+                  <a class='startText'>by</a>
+                  <a class='startText'>XiaoHong</a>
+                  <a class='startText'>XeLa</a>
+                </h2>
+                <h4 style='margin: 5px; cursor: default;'>本网站由小宏XeLa制作</h4>
+              </div>
+              <br>
+              <div align="center">
+                <div class='authorWork'>
+                  <div><strong>·</strong> 作者：小宏XeLa</div>
+                  <div><strong>·</strong> 版本号：v2.1.0.1</div><br>
+                  <strong style='font-size:17px'>
+                    <a class='bodyButton' target="_blank">
+                      <img src="https://www.bilibili.com/favicon.ico" style='height:15px;'> bilibili(未开放)
+                    </a>
+                    <a href='https://shequ.codemao.cn/user/9232151' class='bodyButton' target="_blank">
+                      <img src="https://static.codemao.cn/whitef/favicon.ico" style='height:15px;'> 编程猫
+                    </a>
+                    <a href='https://box3.fun/u/codemao2020' class='bodyButton' target="_blank">
+                      <img src="https://box3.fun/favicon.ico" style='height:15px;'> 神奇代码岛
+                    </a>
+                    <a href='https://codepen.io/Xiaohong2022' class='bodyButton' target="_blank">
+                      <img src="https://cpwebassets.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" style='height:15px;'>
+                      CodePen
+                    </a>
+                    <a href='https://gitee.com/Xiaohong2022' class='bodyButton' target="_blank">
+                      <img src="https://gitee.com/static/images/logo-black.svg?t=158106664" style='height:15px'> 
+                    </a>
+                  </strong>
+                </div>
+              </div>
+            </div>
+          <script>
+
+function dialogOpen(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog1")[0]
+  dialog.style.display = 'block'
+  dialogn.style.display = 'block'
+  setTimeout(()=>{
+    dialogn.style.transform = 'scale(1)'
+    dialog.style.backgroundColor = '#000a'
+    dialog.style.backdropFilter ='blur(3px)'
+    dialogn.style.opacity=1;
+  },20)
+}
+function dialogClose(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog1")[0]
+  dialogn.style.transform = 'scale(0.5)'
+  dialog.style.backgroundColor = '#0000'
+  dialog.style.backdropFilter ='blur(0px)'
+  dialogn.style.opacity = 0.05;
+  setTimeout(()=>{
+    document.getElementsByName("dialog")[0].style.display = 'none'
+    dialogn.style.display = 'none'
+  },300)
+}
+
+          </script>
+        </div>
+      <!-- 随机数弹窗开始 -->
+        <div class="dialog" name='dialog2'>
+
+          <div class="dialogHead">
+            <span class='dialogHeadText'>随机数测试</span>
+            <a class="dialogCloseBtn" href="javascript:dialog2Close();">×</a>
+          </div>
+
+          <div class="dialogBody" style='text-align: left'>
+            <div>
+              <span style='font-size:25px;cursor: default' class='nose'>结果：</span><a class='nose'>
+              </a><b style='font-size:30px' name='ranNum'>0</b>
+            </div>
+            <div style='margin: 1em 0px 0px 0px;font-size:15px;cursor: default'>
+              <p class='diaP'>
+                <span class='nose'>最小值：</span><br>
+                <input class='input' value='0' name='sjin'>
+              </p>
+              <p class='diaP'>
+                <span class='nose'>最大值：</span><br>
+                <input class='input' value='1' name='sjin'>
+              </p>
+              <p class='diaP'>
+                <span class='nose'>保留小数位数：</span><br>
+                <input class='input' value='0' name='sjin'>
+              </p>
+              <button onclick='sjshuaxin()' style='margin: 1em 0px 0px 0px;cursor: pointer'  class='nose'>刷新</button><a class='nose'>
+              </a><button onclick='sjmoren()' style='margin: 1em 0px 0px 0px;cursor: pointer'  class='nose'>默认值</button>
+            </div>
+          </div>
+        <script>
+
+function dialog2Open(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog2")[0]
+  dialog.style.display = 'block'
+  dialogn.style.display = 'block'
+  setTimeout(()=>{
+    dialogn.style.transform = 'scale(1)'
+    dialog.style.backgroundColor = '#000a'
+    dialog.style.backdropFilter ='blur(3px)'
+    dialogn.style.opacity=1;
+  },20)
+}
+function dialog2Close(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog2")[0]
+  dialogn.style.transform = 'scale(0.5)'
+  dialog.style.backgroundColor = '#0000'
+  dialog.style.backdropFilter ='blur(0px)'
+  dialogn.style.opacity = 0.05;
+  setTimeout(()=>{
+    document.getElementsByName("dialog")[0].style.display = 'none'
+    dialogn.style.display = 'none'
+  },300)
+}
+function getRandom(min=0,max=1,fixed=0) { 
+  let differ=max-min
+  let randoms=Math.random()
+  return Number((min+differ*randoms).toFixed(fixed))
+}
+function sjshuaxin(){
+  var inputs = document.getElementsByName('sjin')
+  var min = Number(inputs[0].value)
+  var max = Number(inputs[1].value)
+  var xs = Number(inputs[2].value)
+  document.getElementsByName("ranNum")[0].innerHTML = getRandom(min,max,xs)
+}
+function sjmoren(){
+  var inputs = document.getElementsByName('sjin')
+  inputs[0].value = 0
+  inputs[1].value = 1
+  inputs[2].value = 0
+  document.getElementsByName("ranNum")[0].innerHTML = 0
+}
+
+        </script>
+      </div>
+     <!-- 随机数弹窗开始 -->
+        <div class="dialog" name='dialog4'>
+
+          <div class="dialogHead">
+            <span class='dialogHeadText'>随机数测试</span>
+            <a class="dialogCloseBtn" href="javascript:dialog4Close();">×</a>
+          </div>
+
+          <div class="dialogBody" style='text-align: left'>
+            <div>
+              <span style='font-size:25px;cursor: default' class='nose'>结果：</span><a class='nose'>
+              </a><b style='font-size:30px' name='ranNum'>0</b>
+            </div>
+            <div style='margin: 1em 0px 0px 0px;font-size:15px;cursor: default'>
+              <p class='diaP'>
+                <span class='nose'>最小值：</span><br>
+                <input class='input' value='0' name='sjin'>
+              </p>
+              <p class='diaP'>
+                <span class='nose'>最大值：</span><br>
+                <input class='input' value='1' name='sjin'>
+              </p>
+              <p class='diaP'>
+                <span class='nose'>保留小数位数：</span><br>
+                <input class='input' value='0' name='sjin'>
+              </p>
+              <button onclick='sjshuaxin()' style='margin: 1em 0px 0px 0px;cursor: pointer'  class='nose'>刷新</button><a class='nose'>
+              </a><button onclick='sjmoren()' style='margin: 1em 0px 0px 0px;cursor: pointer'  class='nose'>默认值</button>
+            </div>
+          </div>
+        <script>
+
+function dialog4Open(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog2")[0]
+  dialog.style.display = 'block'
+  dialogn.style.display = 'block'
+  setTimeout(()=>{
+    dialogn.style.transform = 'scale(1)'
+    dialog.style.backgroundColor = '#000a'
+    dialog.style.backdropFilter ='blur(3px)'
+    dialogn.style.opacity=1;
+  },20)
+}
+function dialog4Close(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog2")[0]
+  dialogn.style.transform = 'scale(0.5)'
+  dialog.style.backgroundColor = '#0000'
+  dialog.style.backdropFilter ='blur(0px)'
+  dialogn.style.opacity = 0.05;
+  setTimeout(()=>{
+    document.getElementsByName("dialog")[0].style.display = 'none'
+    dialogn.style.display = 'none'
+  },300)
+}
+function getRandom(min=0,max=1,fixed=0) { 
+  let differ=max-min
+  let randoms=Math.random()
+  return Number((min+differ*randoms).toFixed(fixed))
+}
+function sjshuaxin(){
+  var inputs = document.getElementsByName('sjin')
+  var min = Number(inputs[0].value)
+  var max = Number(inputs[1].value)
+  var xs = Number(inputs[2].value)
+  document.getElementsByName("ranNum")[0].innerHTML = getRandom(min,max,xs)
+}
+function sjmoren(){
+  var inputs = document.getElementsByName('sjin')
+  inputs[0].value = 0
+  inputs[1].value = 1
+  inputs[2].value = 0
+  document.getElementsByName("ranNum")[0].innerHTML = 0
+}
+
+        </script>
+      </div>
+    <!-- Math弹窗开始 -->
+     <div class="dialog" name='dialog3'>
+
+        <div class="dialogHead">
+          <span class='dialogHeadText'>数学</span>
+          <a class="dialogCloseBtn" href="javascript:dialog3Close();">×</a>
+        </div>
+
+        <div class="dialogBody ystc">
+          <div class='head' >
+            <btn class='dqxx'>因数和倍数</btn><btn>分数和小数</btn><btn>百/千分比</btn><btn>恶臭数字</btn>
+          <div class='body' >
+            <div class='dqxx'>
+              页面1
+            </div>
+            <div>
+              <h2>分数化小数</h2>
+              <di class='fszh' id="分数化小数">
+                <di class='sr'>
+                  <di class='fs'>
+                    <input value='1'><hr align="left"><input value='2'>
+                  </di>
+                  <di class='fb'>
+                    <span> = </span><b>0.5</b>
+                  </di>
+                </di>
+                <di class='op'>
+                  <di key-b94X17595BWg32X6UNtg><font>保留</font><input type="number" value="0" min="0" max="16"><font>小数</font></di><button>转化</button>
+                </di>
+              </di>
+              <h2>小数化分数</h2>
+              <di class='fszh' id="小数化分数">
+                <di class='sr'>
+                  <di class='xx'>
+                    <input style="width:40px" value="0.5">
+                  </di>
+                  <di class='fb' key-jL2f6970KO35JHkABRzV>
+                    <span style="margin-right:5px">=</span>
+                    <di class='fs' key-qdmT6UzI3T3tx2EOh9p9>
+                      <b>1</b><hr align="left"><b>2</b>
+                    </di>
+                  </di>
+                </di>
+                <di><button class="op">转化</button></di>
+              </di>
+            </div>
+            <div>
+              <h2>分数化百分比</h2>
+              <di class='fszh' id="百分比">
+                <di class='sr'>
+                  <di class='fs'>
+                    <input value='1'><hr align="left"><input value='2'>
+                  </di>
+                  <di class='fb'>
+                    <span> = </span><b>50%</b>
+                  </di>
+                </di>
+                <di class='op'>
+                  <label><input type="checkbox"><font> 保留小数</font>
+</label><button>转化</button>
+                </di>
+              </di>
+              <h2>分数化千分比</h2>
+              <di class='fszh' id="千分比">
+                <di class='sr'>
+                  <di class='fs'>
+                    <input value='1'><hr align="left"><input value='2'>
+                  </di>
+                  <di class='fb'>
+                    <span> = </span><b>500‰</b>
+                  </di>
+                </di>
+                <di class='op'>
+                  <label><input type="checkbox"><font> 保留小数</font>
+</label><button>转化</button>
+                </di>
+              </di>
+              <script>
+mathfsjsset=(h,j)=>{
+ var a=h.getElementsByClassName("sr")[0]
+ var b=h.getElementsByClassName("op")[0]
+ var c=a.getElementsByTagName("input")
+ var d=a.getElementsByTagName("b")[0]
+ var e=b.getElementsByTagName("input")[0]
+ var f=b.getElementsByTagName("button")[0]
+ e.checked=true
+ f.onclick=()=>{
+  var z=c[0].value,m=c[1].value
+  if(isNaN(Number(z))||isNaN(Number(m))){d.innerHTML="输入有误：必须是数字";return}
+  if(Number(m)<=0){d.innerHTML="输入有误：分母不能为0";return}
+  if(Number(z)>Number(m)){d.innerHTML="输入有误：不能为假分数";return}
+  if(z.includes('.')||m.includes('.')){d.innerHTML="输入有误：分母分子都不能为小数";return}
+  d.innerHTML=(e.checked?(j/m)*z:~~((j/m)*z))+(j==100?"%":"‰")
+ }
+}
+mathfsjsset(document.getElementById("百分比"),100)
+mathfsjsset(document.getElementById("千分比"),1000)
+              </script>
+            </div>
+            <div>
+              <h1>1145141919810</h1>
+            </div>
+          </div>
+        </div>
+        <style>
+
+font,label,button{user-select:none}
+.ystc .head btn{
+  overflow: hidden;
+  padding: 5px 1%;
+  margin: 0px;
+  user-select:none;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-bottom:2px solid #0000;
+}
+
+.ystc .head btn[class=dqxx]{
+  border-bottom:2px solid #6cf;
+}
+
+.ystc .head{
+  user-select:none;
+  text-align: left
+}
+
+.ystc .head btn:hover{
+  border-bottom:2px solid #6cf
+}
+
+.ystc .head btn:active{
+  background:#aaa2;
+  border-bottom:2px solid #6cf;
+}
+
+.ystc .body div{
+  padding: 20px;
+  display:none;
+  text-align: left
+}
+
+.ystc .body h2{
+  margin: 5px 1px;
+}
+
+.ystc .body div[class=dqxx]{
+  display:block;
+  user-select:text;
+}
+.ystc .body .dqxx .fs hr{
+  width:1.7em;
+  border-style: solid;
+  margin:0.2em 0px
+}
+
+.ystc .body .dqxx .fs input{
+  width:1.7em;
+  text-align: center;
+}
+.ystc .body .dqxx .op{
+  margin:7.5px 0px 0px 0px;
+}
+.ystc .body .dqxx .sr{
+  display: flex;
+  align-items: center;
+}
+.ystc .body .dqxx .fb{
+  font-size: 30px;
+}
+.ystc .body .dqxx .fb span{
+  margin:0px 0px 0px 0.5em;
+  user-select:none
+}
+.ystc .body .dqxx .fszh{
+  display: flex;
+  flex-direction: column;
+}
+.ystc .body .dqxx .fs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+input[type=number]{width:40px}
+*[key-b94X17595BWg32X6UNtg] *{margin-right:5px}
+*[key-jL2f6970KO35JHkABRzV] {display: flex;align-items: center;align-content: center;}
+*[key-qdmT6UzI3T3tx2EOh9p9] {font-size:20px}
+
+        </style>
+        <script>
+
+function dialog3Open(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog3")[0]
+  dialog.style.display = 'block'
+  dialogn.style.display = 'block'
+  setTimeout(()=>{
+    dialogn.style.transform = 'scale(1)'
+    dialog.style.backgroundColor = '#000a'
+    dialog.style.backdropFilter ='blur(3px)'
+    dialogn.style.opacity=1;
+  },20)
+}
+function dialog3Close(){
+  var dialog = document.getElementsByName("dialog")[0]
+  var dialogn = document.getElementsByName("dialog3")[0]
+  dialogn.style.transform = 'scale(0.5)'
+  dialog.style.backgroundColor = '#0000'
+  dialog.style.backdropFilter ='blur(0px)'
+  dialogn.style.opacity = 0.05;
+  setTimeout(()=>{
+    document.getElementsByName("dialog")[0].style.display = 'none'
+    dialogn.style.display = 'none'
+  },300)
+}
+
+var ystc = document.getElementsByClassName('ystc')[0].getElementsByTagName("btn")
+var ystccon = document.getElementsByClassName('ystc')[0].getElementsByClassName('body')[0].getElementsByTagName("div")
+for (let ysd in ystc) {
+  ystc[ysd].onclick = (()=>{
+    for(let c of ystc){c.className = ''}
+    for(let c of ystccon){c.className = ''}
+    ystc[ysd].className = 'dqxx'
+    ystccon[ysd].className = 'dqxx'
+  })
+}
+
+          </script>
+        </div></div></div></div>
+   </div>
+  </body>
+</html>
+<script>
+
+function getParameters(variable = ''){
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if(pair[0] == variable){return pair[1]}
+  }
+  return(null);
+}
+var news = document.getElementsByName('news')[0]
+var nonews = getParameters('nonews')
+if(nonews != "false"){
+  setTimeout((()=>{
+    news.style.right  = '-8.5px'
+    /*setTimeout((()=>{
+      newsDiaClose()
+    }),15000)*/
+  }),1000)
+}
+function newsDiaClose(){
+  news.style.right  = '-400px'
+}
+
+</script>
+<script>
+function getPxNum(data = ''){
+  var string = '';
+  for(var i=0;i<data.length;i++){
+    var test = data[i]
+    if(test == 'p'){
+      break
+    }else{
+      string += test
+    }
+  }
+  return Number(string);
+}
+function getHeightWidth(){
+  var h = document.documentElement.clientHeight
+  return([h,document.documentElement.clientWidth,(h/2)-(h/2.005)])
+}
+var cishu = 0
+var cs = ''
+var dqym = 'sy'
+if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
+  alert("检测到你当前运行设备类型为移动端，可能会导致网页元素位置错乱，强烈推荐你使用电脑端运行")
+}
+
+setInterval(async()=>{//采用setInterval来重复循环获取浏览器宽度并改变页面长度
+  var bco = document.getElementsByName('bco')[0]
+  var bcosjk = await getHeightWidth()
+  document.getElementsByName('hsp')[0].style.padding = '0px '+(bcosjk[1]-450)/5+'px'
+  bco.style.height = (bcosjk[0]-70+bcosjk[2])+'px'
+  bco.style.width = (bcosjk[1]-(bcosjk[0]/2)*0.04)+'px'
+  document.getElementsByName('body')[0].style.display = 'block'
+  var cd = await getParameters('cd')
+  var codecss = document.getElementsByName('codecss')[0]
+  var numcis = (getPxNum(bco.style.width) < 926 ? getPxNum(bco.style.width)-35 : 900)
+  if(cishu != numcis){
+    if(getPxNum(bco.style.width) < 935.88){
+      codecss.innerText = `.codeWork,.home .gg,.gjlb{width: ${getPxNum(bco.style.width)-35}px;}`
+      cishu = getPxNum(bco.style.width)-35
+    }else{
+      codecss.innerText = `.codeWork,.home .gg,.gjlb{width: 900px;}`
+      cishu = 900
+    }
+  }
+  var hbh = '#00bfff'
+  var topButton = document.getElementsByClassName("back-to-top")[0]
+  if(bco.scrollTop > 50){
+    topButton.style.display = 'block'
+  }else{
+    topButton.style.display = 'none'
+  }
+  if(cd == 'dm'){
+    document.getElementsByName('dmcon')[0].style.display = 'block'
+    document.getElementsByName('start')[0].style.display = 'none'
+    document.getElementsByName('sydnr')[0].style.display = 'none'
+    document.getElementsByName('hb')[1].style.backgroundColor = hbh
+  }else{
+    document.getElementsByName('start')[0].style.display = 'none'
+    document.getElementsByName('dmcon')[0].style.display = 'none'
+    document.getElementsByName('sydnr')[0].style.display = 'block'
+    document.getElementsByName('hb')[0].style.backgroundColor = hbh
+  }
+},100)
+</script>
